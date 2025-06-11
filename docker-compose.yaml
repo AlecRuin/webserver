@@ -6,7 +6,7 @@ services:
     ports:
       - "3004:3000"
     volumes:
-      - "C:/Users/Administrator/Desktop/swoggerslol/client/public:/app/client/public"
+      - "/home/linuxserver/swoggerslol/client/public:/app/client/public"
   website2:
     build: .
     environment:
@@ -14,7 +14,7 @@ services:
     ports:
       - "3005:3000"
     volumes:
-      - "C:/Users/Administrator/Desktop/swoggerslol/client/public:/app/client/public"
+      - "/home/linuxserver/swoggerslol/client/public:/app/client/public"
   website3:
     build: .
     environment:
@@ -22,4 +22,4 @@ services:
     ports:
       - "3006:3000"
     volumes:
-      - "C:/Users/Administrator/Desktop/swoggerslol/client/public:/app/client/public"
+      - "/home/linuxserver/swoggerslol/client/public:/app/client/public"

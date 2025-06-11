@@ -1,4 +1,4 @@
-import Post from "./Posts.json" with {type:"json"}
+import Post from "./Posts.json" assert {type:"json"}
 import {default as CONNECTION} from "../config/connection.mjs"
 import { POSTS } from "../schemas/index.mjs"
 CONNECTION.then(async()=>{
