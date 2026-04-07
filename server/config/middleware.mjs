@@ -1,9 +1,12 @@
 import express from "express"
 import {default as cors} from "cors"
-import "dotenv/config"
+import dotenv from "dotenv"
+import { dirname, join } from "path"
+import { fileURLToPath } from "url"
+const __DIRNAME = dirname(fileURLToPath(import.meta.url))
+dotenv.config({path:join(__DIRNAME,"../../.env")})
 import { default as rateLimit } from "express-rate-limit"
 import { expressMiddleware } from "@apollo/server/express4"
-import { join } from "path"
 const LIMITER = rateLimit({
     windowMs:15*60*1000, //15 mins
     max: 100, //Limit each IP to 100 requests per windowMs
@@ -11,12 +14,22 @@ const LIMITER = rateLimit({
 })
 export default function ApplyMiddleware(APP,APOLLO,__DIRNAME){
     APP.use(express.json())
-    APP.use(cors({origin:process.env.BASE_URL+":5173"}))
+    APP.use(
+        cors({
+            origin:[
+                process.env.BASE_URL+":5173",
+                process.env.BASE_URL+process.env.PORT,
+                "https://swoggerslol.com"
+            ]
+        })
+    )
     APP.use(LIMITER)
     APP.set("view engine","ejs")
     APP.set("views","./views/html")
 
     APP.use("/graphql",expressMiddleware(APOLLO))
-    APP.use(express.static(join(__DIRNAME,"../client/dist")))
-    APP.use(express.static(join(__DIRNAME,"../client/public")))
+    APP.use(express.static(join(__DIRNAME,"../client-swoggerslol/dist"),{index:false}))
+    APP.use(express.static(join(__DIRNAME,"../client-swoggerslol/public"),{index:false}))
+    APP.use(express.static(join(__DIRNAME,"../client-deadlab/dist"),{index:false}))
+    APP.use(express.static(join(__DIRNAME,"../client-deadlab/public"),{index:false}))
 }

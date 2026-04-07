@@ -1,4 +1,5 @@
-import "dotenv/config"
+import dotenv from "dotenv"
+dotenv.config({path:"../.env"})
 import express from "express"
 import { default as rateLimit } from "express-rate-limit"
 // const  {default:ApolloServer} =require("@apollo/server")
@@ -26,7 +27,7 @@ const __DIRNAME = dirname(fileURLToPath(import.meta.url))
 const APOLLO = new ApolloServer({
     typeDefs,
     resolvers,
-    csrfPrevention:true,
+    // csrfPrevention:true,
     introspection:false,
     playground: false,
     cache:"bounded",
