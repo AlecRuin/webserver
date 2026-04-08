@@ -17,9 +17,10 @@ export default function ApplyMiddleware(APP,APOLLO,__DIRNAME){
     APP.use(
         cors({
             origin:[
-                process.env.BASE_URL+":5173",
-                process.env.BASE_URL+process.env.PORT,
-                "https://swoggerslol.com"
+                "http://localhost"+":5173", //vite dev
+                "http://localhost"+process.env.PORT, //express dev
+                process.env.DEADLAB_URI, //deadlab production
+                process.env.SWOGGERSLOL_URI //ugly fuck ass swoggerslol production fr
             ]
         })
     )

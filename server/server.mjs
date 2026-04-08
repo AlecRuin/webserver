@@ -11,9 +11,8 @@ import {resolvers,typeDefs} from "./models/index.mjs"
 import { ApolloServerPluginCacheControl } from "@apollo/server/plugin/cacheControl"
 import { ApolloServerPluginLandingPageDisabled } from '@apollo/server/plugin/disabled'
 // import {default as cors} from "cors"
-import {default as DATABASE_CONNECTION} from "./config/connection.mjs"
+import {DEADLAB_CONNECTION, SWOGGERSLOL_CONNECTION} from "./config/connection.mjs"
 import {default as ApplyMiddleware} from "./config/middleware.mjs"
-import {SetDir,ClearFile,Log} from "./utils/logging.mjs"
 import {ROUTES} from "./controllers/index.mjs"
 const APP = express()
 const PORT = process.env.PORT||3000;
@@ -33,17 +32,17 @@ const APOLLO = new ApolloServer({
     cache:"bounded",
     plugins:[ApolloServerPluginCacheControl({defaultMaxAge:3600}),ApolloServerPluginLandingPageDisabled()]//Default cache is 1hr long
 })
-SetDir(join(__DIRNAME,"logs"))
-ClearFile()
 
 async function AttemptConnections(){
     //Connect to DB first
     try {
-        await DATABASE_CONNECTION
-        Log(new Error(),`Connection to DB established on ${process.env.MONGODB_URI}`);
+        await DEADLAB_CONNECTION
+        console.log(`Connection to DB established on ${process.env.MONGO_DEADLAB_URI}`);
+        await SWOGGERSLOL_CONNECTION
+        console.log(`Connection to DB established on ${process.env.MONGO_SWOGGERSLOL_URI}`);
         //connect apollo
         await APOLLO.start();
-        Log(new Error(),`Connection to APOLLO established on http://localhost:${PORT}/graphql`)
+        console.log(`Connection to APOLLO established on http://localhost:${PORT}/graphql`)
         //connect middleware
         ApplyMiddleware(APP,APOLLO,__DIRNAME)
         //connect routes
@@ -58,11 +57,9 @@ async function AttemptConnections(){
             });
         }        
         //connect express
-        APP.listen(PORT,()=>Log(new Error(),`Connection to Express established on http://localhost:${PORT}`))
+        APP.listen(PORT,()=>console.log(`Connection to Express established on http://localhost:${PORT}`))
     } catch (error) {
-        Log(new Error(),error)
-        console.log(error);
-        
+        console.error(error);
     }
 } 
 AttemptConnections()
