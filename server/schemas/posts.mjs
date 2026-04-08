@@ -1,6 +1,7 @@
-import {default as mongoose} from "mongoose"
+import { SWOGGERSLOL_CONNECTION } from "../config/connection.mjs"
+import {Schema} from "mongoose"
 
-const POSTS_SCHEMA = new mongoose.Schema({
+const POSTS_SCHEMA = new Schema({
     //The preview image WILL be MODNAME
     post_title:{type:String,required:true},
     preview_text:String,
@@ -22,4 +23,4 @@ const POSTS_SCHEMA = new mongoose.Schema({
         }
     ],
 },{versionKey:false})
-export const POSTS = mongoose.model("posts",POSTS_SCHEMA)
+export const POSTS = SWOGGERSLOL_CONNECTION.model("posts",POSTS_SCHEMA)
