@@ -35,6 +35,7 @@ ROUTES.post("/update",async(req,res)=>{
         const post = await POSTS.findOne({post_title:post_title})
         if(!post)return res.status(404).send("missing post");
         post.version_history.unshift(patch)
+        post.updated_at = new Date()
         await post.save();
         console.log(post);
         return res.status(200).send("success")

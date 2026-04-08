@@ -22,5 +22,6 @@ const POSTS_SCHEMA = new Schema({
             _id:false
         }
     ],
+    updated_at:{type:Date,default:Date.now}
 },{versionKey:false})
 export const POSTS = SWOGGERSLOL_CONNECTION.model("posts",POSTS_SCHEMA)
