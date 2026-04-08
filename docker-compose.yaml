@@ -1,25 +1,27 @@
 services:
   website1:
     build: .
-    environment:
-      - APP_NAME=Website1
     ports:
-      - "3004:3000"
+      - "4001:3000"
     volumes:
-      - "/home/linuxserver/swoggerslol/client/public:/app/client/public"
+      - "/home/linuxserver/swoggerslol/client-swoggerslol/public:/app/client-swoggerslol/public"
+      - "/home/linuxserver/swoggerslol/client-deadlab/public:/app/client-deadlab/public"
+    env_file: .env
+
   website2:
     build: .
-    environment:
-      - APP_NAME=Website2
     ports:
-      - "3005:3000"
+      - "4002:3000"
     volumes:
-      - "/home/linuxserver/swoggerslol/client/public:/app/client/public"
+      - "/home/linuxserver/swoggerslol/client-swoggerslol/public:/app/client-swoggerslol/public"
+      - "/home/linuxserver/swoggerslol/client-deadlab/public:/app/client-deadlab/public"
+    env_file: .env
+
   website3:
     build: .
-    environment:
-      - APP_NAME=Website3
     ports:
-      - "3006:3000"
+      - "4003:3000"
     volumes:
-      - "/home/linuxserver/swoggerslol/client/public:/app/client/public"
+      - "/home/linuxserver/swoggerslol/client-swoggerslol/public:/app/client-swoggerslol/public"
+      - "/home/linuxserver/swoggerslol/client-deadlab/public:/app/client-deadlab/public"
+    env_file: .env
