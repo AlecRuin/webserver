@@ -8,7 +8,7 @@
     "install": "cd server && npm i && cd ../client-swoggerslol && npm i && cd ../client-deadlab && npm i",
     "build":"cd client-swoggerslol && npm run build && cd ../client-deadlab && npm run build",
     "seed":"cd server && node seeds/index.mjs",
-    "docker-rebuild": "docker-compose down && docker-compose build && docker-compose up -d"
+    "docker-rebuild": "docker compose down && docker compose build && docker compose up -d"
   },
   "repository": {
     "type": "git",
