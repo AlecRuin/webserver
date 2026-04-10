@@ -24,10 +24,25 @@ export default [
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+
+      // enforce single tab indentation
+      'indent': ['error', 'tab'],
+
+      // enforce double quotes everywhere
+      'quotes': ['error', 'double'],
+
+      // enforce semicolons everywhere
+      'semi': ['error', 'always'],
+
+      // enforce consistent function argument spreading
+      'function-call-argument-newline': ['error', 'consistent'],
+
+      // enforce consistent array spreading
+      'array-element-newline': ['error', 'consistent'],
+
+      // enforce consistent object spreading
+      'object-curly-newline': ['error', { 'consistent': true }],
     },
   },
 ]
