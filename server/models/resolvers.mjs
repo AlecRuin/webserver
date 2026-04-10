@@ -7,9 +7,7 @@ async function getPosts() {
 export const resolvers = {
 	Query: {
 		hello: () => {
-			console.log(
-				"queried!",
-			);
+			console.log("queried!");
 
 			return "world";
 		},
@@ -24,12 +22,7 @@ export const resolvers = {
 				return error;
 			}
 		},
-		GetPostByPostName: async (
-			parent,
-			{
-				PostName,
-			},
-		) => {
+		GetPostByPostName: async (parent, { PostName }) => {
 			try {
 				const posts =
 					await getPosts();

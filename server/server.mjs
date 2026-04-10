@@ -20,16 +20,7 @@ const LIMITER = rateLimit({
 	windowMs: 15 * 60 * 1000, //15 mins
 	max: 1000, //Limit each IP to 100 requests per windowMs
 	message: "Too many requests, please try again later.",
-	skip: (req) =>
-		req.path.startsWith(
-			"data",
-		) ||
-		req.path.startsWith(
-			"images",
-		) ||
-		req.path.startsWith(
-			"videos",
-		),
+	skip: (req) => req.path.startsWith("data") || req.path.startsWith("images") || req.path.startsWith("videos"),
 });
 const __DIRNAME = dirname(fileURLToPath(import.meta.url));
 const APOLLO = new ApolloServer({
@@ -40,11 +31,9 @@ const APOLLO = new ApolloServer({
 	playground: false,
 	cache: "bounded",
 	plugins: [
-		ApolloServerPluginCacheControl(
-			{
-				defaultMaxAge: 3600,
-			},
-		),
+		ApolloServerPluginCacheControl({
+			defaultMaxAge: 3600,
+		}),
 		ApolloServerPluginLandingPageDisabled(),
 	], //Default cache is 1hr long
 });
@@ -53,65 +42,32 @@ async function AttemptConnections() {
 	//Connect to DB first
 	try {
 		await DEADLAB_CONNECTION;
-		console.log(
-			`Connection to DB established on ${process.env.MONGO_DEADLAB_URI}`,
-		);
+		console.log(`Connection to DB established on ${process.env.MONGO_DEADLAB_URI}`);
 		await SWOGGERSLOL_CONNECTION;
-		console.log(
-			`Connection to DB established on ${process.env.MONGO_SWOGGERSLOL_URI}`,
-		);
+		console.log(`Connection to DB established on ${process.env.MONGO_SWOGGERSLOL_URI}`);
 		//connect apollo
 		await APOLLO.start();
-		console.log(
-			`Connection to APOLLO established on http://localhost:${PORT}/graphql`,
-		);
+		console.log(`Connection to APOLLO established on http://localhost:${PORT}/graphql`);
 		//connect middleware
-		ApplyMiddleware(
-			APP,
-			APOLLO,
-			__DIRNAME,
-		);
+		ApplyMiddleware(APP, APOLLO, __DIRNAME);
 		//connect routes
-		APP.use(
-			LIMITER,
-		);
-		APP.use(
-			ROUTES,
-		);
-		if (
-			process
-				.env
-				.NODE_ENV ==
-			"production"
-		) {
-			APP.get(
-				"/graphql",
-				(
-					req,
-					res,
-				) => {
-					res.sendFile(
-						join(
-							__DIRNAME,
-							"../client/dist",
-							"index.html",
-						),
-					);
-				},
-			);
+		APP.use(LIMITER);
+		APP.use(ROUTES);
+		if (process.env.NODE_ENV == "production") {
+			APP.get("/graphql", (req, res) => {
+				res.sendFile(
+					join(
+						__DIRNAME,
+						"../client/dist",
+						"index.html",
+					),
+				);
+			});
 		}
 		//connect express
-		APP.listen(
-			PORT,
-			() =>
-				console.log(
-					`Connection to Express established on http://localhost:${PORT}`,
-				),
-		);
+		APP.listen(PORT, () => console.log(`Connection to Express established on http://localhost:${PORT}`));
 	} catch (error) {
-		console.error(
-			error,
-		);
+		console.error(error);
 	}
 }
 AttemptConnections();

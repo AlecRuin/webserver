@@ -15,24 +15,22 @@ const LIMITER = rateLimit({
 export default function ApplyMiddleware(APP, APOLLO, __DIRNAME) {
 	APP.use(express.json());
 	APP.use(
-		cors(
-			{
-				origin: [
-					"http://localhost" +
-						":5173", //vite dev
-					"http://localhost" +
-						process
-							.env
-							.PORT, //express dev
+		cors({
+			origin: [
+				"http://localhost" +
+					":5173", //vite dev
+				"http://localhost" +
 					process
 						.env
-						.DEADLAB_URI, //deadlab production
-					process
-						.env
-						.SWOGGERSLOL_URI, //ugly fuck ass swoggerslol production fr
-				],
-			},
-		),
+						.PORT, //express dev
+				process
+					.env
+					.DEADLAB_URI, //deadlab production
+				process
+					.env
+					.SWOGGERSLOL_URI, //ugly fuck ass swoggerslol production fr
+			],
+		}),
 	);
 	APP.use(LIMITER);
 	APP.set("view engine", "ejs");
@@ -40,47 +38,23 @@ export default function ApplyMiddleware(APP, APOLLO, __DIRNAME) {
 
 	APP.use("/graphql", expressMiddleware(APOLLO));
 	APP.use(
-		express.static(
-			join(
-				__DIRNAME,
-				"../client-swoggerslol/dist",
-			),
-			{
-				index: false,
-			},
-		),
+		express.static(join(__DIRNAME, "../client-swoggerslol/dist"), {
+			index: false,
+		}),
 	);
 	APP.use(
-		express.static(
-			join(
-				__DIRNAME,
-				"../client-swoggerslol/public",
-			),
-			{
-				index: false,
-			},
-		),
+		express.static(join(__DIRNAME, "../client-swoggerslol/public"), {
+			index: false,
+		}),
 	);
 	APP.use(
-		express.static(
-			join(
-				__DIRNAME,
-				"../client-deadlab/dist",
-			),
-			{
-				index: false,
-			},
-		),
+		express.static(join(__DIRNAME, "../client-deadlab/dist"), {
+			index: false,
+		}),
 	);
 	APP.use(
-		express.static(
-			join(
-				__DIRNAME,
-				"../client-deadlab/public",
-			),
-			{
-				index: false,
-			},
-		),
+		express.static(join(__DIRNAME, "../client-deadlab/public"), {
+			index: false,
+		}),
 	);
 }

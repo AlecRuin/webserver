@@ -11,15 +11,7 @@ function App() {
 		<>
 			<section id="center">
 				<div className="hero">
-					<img
-						src={
-							heroImg
-						}
-						className="base"
-						width="170"
-						height="179"
-						alt=""
-					/>
+					<img src={heroImg} className="base" width="170" height="179" alt=""/>
 					<img
 						src={
 							reactLogo
@@ -64,8 +56,7 @@ function App() {
 								count +
 								1,
 						)
-					}
-				>
+					}>
 					Count
 					is{" "}
 					{
@@ -81,8 +72,7 @@ function App() {
 					<svg
 						className="icon"
 						role="presentation"
-						aria-hidden="true"
-					>
+						aria-hidden="true">
 						<use href="/icons.svg#documentation-icon"></use>
 					</svg>
 					<h2>
@@ -97,8 +87,7 @@ function App() {
 						<li>
 							<a
 								href="https://vite.dev/"
-								target="_blank"
-							>
+								target="_blank">
 								<img
 									className="logo"
 									src={
@@ -113,8 +102,7 @@ function App() {
 						<li>
 							<a
 								href="https://react.dev/"
-								target="_blank"
-							>
+								target="_blank">
 								<img
 									className="button-icon"
 									src={
@@ -132,8 +120,7 @@ function App() {
 					<svg
 						className="icon"
 						role="presentation"
-						aria-hidden="true"
-					>
+						aria-hidden="true">
 						<use href="/icons.svg#social-icon"></use>
 					</svg>
 					<h2>
@@ -151,13 +138,11 @@ function App() {
 						<li>
 							<a
 								href="https://github.com/vitejs/vite"
-								target="_blank"
-							>
+								target="_blank">
 								<svg
 									className="button-icon"
 									role="presentation"
-									aria-hidden="true"
-								>
+									aria-hidden="true">
 									<use href="/icons.svg#github-icon"></use>
 								</svg>
 								GitHub
@@ -166,13 +151,11 @@ function App() {
 						<li>
 							<a
 								href="https://chat.vite.dev/"
-								target="_blank"
-							>
+								target="_blank">
 								<svg
 									className="button-icon"
 									role="presentation"
-									aria-hidden="true"
-								>
+									aria-hidden="true">
 									<use href="/icons.svg#discord-icon"></use>
 								</svg>
 								Discord
@@ -181,13 +164,11 @@ function App() {
 						<li>
 							<a
 								href="https://x.com/vite_js"
-								target="_blank"
-							>
+								target="_blank">
 								<svg
 									className="button-icon"
 									role="presentation"
-									aria-hidden="true"
-								>
+									aria-hidden="true">
 									<use href="/icons.svg#x-icon"></use>
 								</svg>
 								X.com
@@ -196,13 +177,11 @@ function App() {
 						<li>
 							<a
 								href="https://bsky.app/profile/vite.dev"
-								target="_blank"
-							>
+								target="_blank">
 								<svg
 									className="button-icon"
 									role="presentation"
-									aria-hidden="true"
-								>
+									aria-hidden="true">
 									<use href="/icons.svg#bluesky-icon"></use>
 								</svg>
 								Bluesky

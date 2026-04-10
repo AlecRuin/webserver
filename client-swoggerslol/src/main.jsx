@@ -14,11 +14,7 @@ const client = new ApolloClient({
 import Index from "./index";
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
-		<ApolloProvider
-			client={
-				client
-			}
-		>
+		<ApolloProvider client={client}>
 			<Index />
 		</ApolloProvider>
 	</StrictMode>,

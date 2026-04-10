@@ -4,20 +4,13 @@ const classNames = ["previous", "active", "next"];
 
 const CarouselLoadItem = forwardRef((props, ref) => {
 	return (
-		<a
-			ref={
-				ref
-			}
-			className="carousel-item w-25 h-a no-decor"
-			target="_blank"
-		>
+		<a ref={ref} className="carousel-item w-25 h-a no-decor" target="_blank">
 			<div className="video-holder">
 				<div className="loader"></div>
 				<video
 					className="image-stretch w-100 carousel-video"
 					autoPlay
-					muted
-				>
+					muted>
 					<source
 						className="source"
 						type="video/mp4"
@@ -33,68 +26,25 @@ const CarouselLoadItem = forwardRef((props, ref) => {
 
 const CarouselItem = forwardRef((props, ref) => {
 	const changeVideo = (e) => {
-		const ele =
-			e
-				.target
-				.parentElement;
-		var chosenVid =
-			Math.floor(
-				Math.random() *
-					props
-						.videos
-						.length,
-			);
-		ele.href =
-			props.videos[
-				chosenVid
-			].youtube_link;
-		ele.querySelector(
-			".source",
-		).src =
-			"/videos/" +
-			props.videos[
-				chosenVid
-			].video_title.replace(
-				/\s+/g,
-				"-",
-			) +
-			".webm";
-		ele.querySelector(
-			".video-caption",
-		).innerText =
-			props.videos[
-				chosenVid
-			].video_title;
-		ele.querySelector(
-			".carousel-video",
-		).load();
+		const ele = e.target.parentElement;
+		var chosenVid = Math.floor(Math.random() * props.videos.length);
+		ele.href = props.videos[chosenVid].youtube_link;
+		ele.querySelector(".source").src = "/videos/" + props.videos[chosenVid].video_title.replace(/\s+/g, "-") + ".webm";
+		ele.querySelector(".video-caption").innerText = props.videos[chosenVid].video_title;
+		ele.querySelector(".carousel-video").load();
 	};
 
 	if (!props.videos) return <div>Loading...</div>;
 	const selectedVid = Math.floor(Math.random() * props.videos.length);
 	return (
-		<a
-			ref={
-				ref
-			}
-			className={`carousel-item w-25 h-a no-decor ${classNames[props.id]}`}
-			target="_blank"
-			href={
-				props
-					.videos[
-					selectedVid
-				]
-					.youtube_link
-			}
-		>
+		<a ref={ref} className={`carousel-item w-25 h-a no-decor ${classNames[props.id]}`} target="_blank" href={props.videos[selectedVid].youtube_link}>
 			<video
 				onEnded={
 					changeVideo
 				}
 				className="image-stretch w-100 carousel-video"
 				autoPlay
-				muted
-			>
+				muted>
 				<source
 					src={
 						"/videos/" +
@@ -131,117 +81,51 @@ export default function Carousel() {
 	const [refsReady, setRefsReady] = useState(false);
 	let currentIndex = 0;
 	function showNextItem() {
-		if (
-			itemsRef
-				.current
-				.length <
-				1 ||
-			itemsRef
-				.current[0] ==
-				null
-		)
-			return;
-		const items =
-			itemsRef.current;
-		items[
-			currentIndex
-		].classList.add(
-			"next",
-		);
-		items[
-			currentIndex
-		].classList.remove(
-			"previous",
-			"active",
-		);
-		currentIndex =
-			(currentIndex +
-				1) %
-			items.length;
-		items[
-			currentIndex
-		].classList.add(
-			"active",
-		);
-		items[
-			currentIndex
-		].classList.remove(
-			"next",
-			"previous",
-		);
-		items[
-			(currentIndex +
-				1) %
-				items.length
-		].classList.add(
-			"previous",
-		);
-		items[
-			(currentIndex +
-				1) %
-				items.length
-		].classList.remove(
-			"active",
-			"next",
-		);
+		if (itemsRef.current.length < 1 || itemsRef.current[0] == null) return;
+		const items = itemsRef.current;
+		items[currentIndex].classList.add("next");
+		items[currentIndex].classList.remove("previous", "active");
+		currentIndex = (currentIndex + 1) % items.length;
+		items[currentIndex].classList.add("active");
+		items[currentIndex].classList.remove("next", "previous");
+		items[(currentIndex + 1) % items.length].classList.add("previous");
+		items[(currentIndex + 1) % items.length].classList.remove("active", "next");
 	}
 	useEffect(() => {
-		fetch(
-			"/data/showcases.json",
-		)
-			.then(
-				(
-					res,
-				) => {
-					res.json()
-						.then(
-							(
+		fetch("/data/showcases.json")
+			.then((res) => {
+				res.json()
+					.then(
+						(
+							body,
+						) => {
+							setVideos(
 								body,
-							) => {
-								setVideos(
-									body,
-								);
-							},
-						)
-						.catch(
-							(
+							);
+						},
+					)
+					.catch(
+						(
+							err,
+						) =>
+							console.log(
 								err,
-							) =>
-								console.log(
-									err,
-								),
-						);
-				},
-			)
-			.catch(
-				(
-					err,
-				) =>
-					console.log(
-						err,
-					),
-			);
+							),
+					);
+			})
+			.catch((err) => console.log(err));
 	}, []);
 	useEffect(() => {
-		const items =
-			itemsRef.current;
-		if (
-			items.length <
-			1
-		)
-			return;
+		const items = itemsRef.current;
+		if (items.length < 1) return;
 		showNextItem();
-		setPlaying(
-			true,
-		);
+		setPlaying(true);
 	}, [refsReady]);
 	useInterval(
 		() => {
 			showNextItem();
 		},
-		isPlaying
-			? 6000
-			: null,
+		isPlaying ? 6000 : null,
 	);
 	if (!videos)
 		return (
@@ -281,52 +165,43 @@ export default function Carousel() {
 		);
 	return (
 		<div className="basic-text-style w-100 carousel">
-			{[
-				...Array(
-					3,
-				),
-			].map(
-				(
-					_,
-					index,
-				) => (
-					<CarouselItem
-						key={
+			{[...Array(3)].map((_, index) => (
+				<CarouselItem
+					key={
+						index
+					}
+					videos={
+						videos
+					}
+					id={
+						index
+					}
+					ref={(
+						el,
+					) => {
+						itemsRef.current[
 							index
-						}
-						videos={
-							videos
-						}
-						id={
-							index
-						}
-						ref={(
-							el,
-						) => {
-							itemsRef.current[
+						] =
+							el;
+						if (
+							el
+						)
+							videosRef.current[
 								index
 							] =
-								el;
-							if (
-								el
-							)
-								videosRef.current[
-									index
-								] =
-									el.querySelector(
-										".carousel-video",
-									);
-							if (
-								index ===
-								2
-							)
-								setRefsReady(
-									true,
+								el.querySelector(
+									".carousel-video",
 								);
-						}}
-					/>
-				),
-			)}
+						if (
+							index ===
+							2
+						)
+							setRefsReady(
+								true,
+							);
+					}}
+				/>
+			))}
 		</div>
 	);
 }

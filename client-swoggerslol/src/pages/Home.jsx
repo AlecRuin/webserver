@@ -7,18 +7,7 @@ import "./Home.css";
 
 const chunkArray = (array, size) => {
 	return array.reduce((acc, _, i) => {
-		if (
-			i %
-				size ===
-			0
-		)
-			acc.push(
-				array.slice(
-					i,
-					i +
-						size,
-				),
-			);
+		if (i % size === 0) acc.push(array.slice(i, i + size));
 		return acc;
 	}, []);
 };
@@ -29,12 +18,8 @@ export default function Home({ set_nav_data }) {
 	const { loading, error, data } = useQuery(GetAllPosts);
 	const [posts, setPosts] = useState([]);
 	useEffect(() => {
-		if (
-			data
-		) {
-			setPosts(
-				data.GetAllPosts,
-			);
+		if (data) {
+			setPosts(data.GetAllPosts);
 			set_nav_data(
 				data.GetAllPosts.filter(
 					(
@@ -56,14 +41,7 @@ export default function Home({ set_nav_data }) {
 	return (
 		<>
 			<Carousel />
-			<Announcements
-				data={posts.filter(
-					(
-						ele,
-					) =>
-						ele.is_active_project,
-				)}
-			/>
+			<Announcements data={posts.filter((ele) => ele.is_active_project)} />
 			<div>
 				<h3 className="highlight-text-style text-center fs-larger m-my">
 					PROJECTS
@@ -95,8 +73,7 @@ export default function Home({ set_nav_data }) {
 							className="w-100 flex"
 							key={
 								index
-							}
-						>
+							}>
 							{pair.map(
 								(
 									item,

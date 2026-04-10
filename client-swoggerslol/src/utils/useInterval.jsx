@@ -4,30 +4,16 @@ function useInterval(callback, delay) {
 	const savedCallback = useRef();
 
 	useEffect(() => {
-		savedCallback.current =
-			callback;
+		savedCallback.current = callback;
 	}, [callback]);
 
 	useEffect(() => {
-		if (
-			delay ===
-			null
-		)
-			return;
+		if (delay === null) return;
 
-		const tick =
-			() =>
-				savedCallback.current();
-		const id =
-			setInterval(
-				tick,
-				delay,
-			);
+		const tick = () => savedCallback.current();
+		const id = setInterval(tick, delay);
 
-		return () =>
-			clearInterval(
-				id,
-			);
+		return () => clearInterval(id);
 	}, [delay]);
 }
 

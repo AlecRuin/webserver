@@ -10,14 +10,7 @@ a {
 html {
 	background-color: var(--primary);
 	color: white;
-	font-family:
-		-apple-system,
-		BlinkMacSystemFont,
-		"Segoe UI",
-		Roboto,
-		Helvetica,
-		Arial,
-		sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 	min-height: 100vh;
 	scroll-behavior: smooth;
 }
@@ -74,44 +67,14 @@ table td {
 	background-clip: text;
 }
 .txt-grad-r-rgb1-rgb2-rgb1 {
-	background: linear-gradient(
-		to
-			right,
-		var(
-				--rgb1
-			)
-			0%,
-		var(
-				--rgb2
-			)
-			50%,
-		var(
-				--rgb1
-			)
-			100%
-	);
+	background: linear-gradient(to right, var(--rgb1) 0%, var(--rgb2) 50%, var(--rgb1) 100%);
 	font-weight: 800;
 	color: transparent;
 	-webkit-background-clip: text;
 	background-clip: text;
 }
 .txt-grad-l-rgb1-rgb2-rgb1 {
-	background: linear-gradient(
-		to
-			left,
-		var(
-				--rgb1
-			)
-			0%,
-		var(
-				--rgb2
-			)
-			50%,
-		var(
-				--rgb1
-			)
-			100%
-	);
+	background: linear-gradient(to left, var(--rgb1) 0%, var(--rgb2) 50%, var(--rgb1) 100%);
 	font-weight: 800;
 	color: transparent;
 	-webkit-background-clip: text;
@@ -119,88 +82,28 @@ table td {
 }
 
 .txt-grad-primary {
-	background: linear-gradient(
-		to
-			left,
-		var(
-				--primary
-			)
-			0%,
-		var(
-				--lighter-primary
-			)
-			50%,
-		var(
-				--primary
-			)
-			100%
-	);
+	background: linear-gradient(to left, var(--primary) 0%, var(--lighter-primary) 50%, var(--primary) 100%);
 	font-weight: 800;
 	color: transparent;
 	-webkit-background-clip: text;
 	background-clip: text;
 }
 .txt-grad-secondary {
-	background: linear-gradient(
-		to
-			left,
-		var(
-				--secondary
-			)
-			0%,
-		var(
-				--lighter-secondary
-			)
-			50%,
-		var(
-				--secondary
-			)
-			100%
-	);
+	background: linear-gradient(to left, var(--secondary) 0%, var(--lighter-secondary) 50%, var(--secondary) 100%);
 	font-weight: 800;
 	color: transparent;
 	-webkit-background-clip: text;
 	background-clip: text;
 }
 .txt-grad-tertiary {
-	background: linear-gradient(
-		to
-			left,
-		var(
-				--tertiary
-			)
-			0%,
-		var(
-				--lighter-tertiary
-			)
-			50%,
-		var(
-				--tertiary
-			)
-			100%
-	);
+	background: linear-gradient(to left, var(--tertiary) 0%, var(--lighter-tertiary) 50%, var(--tertiary) 100%);
 	font-weight: 800;
 	color: transparent;
 	-webkit-background-clip: text;
 	background-clip: text;
 }
 .txt-grad-quaternary {
-	background: linear-gradient(
-		to
-			left,
-		var(
-				--quaternary
-			)
-			0%,
-		var(
-				--lighter-quaternary
-			)
-			50%,
-		var(
-				--quaternary
-			)
-			100%
-	);
+	background: linear-gradient(to left, var(--quaternary) 0%, var(--lighter-quaternary) 50%, var(--quaternary) 100%);
 	font-weight: 800;
 	color: transparent;
 	-webkit-background-clip: text;
@@ -213,12 +116,10 @@ table td {
 }
 @keyframes shimmer {
 	0% {
-		background-position: 0%
-			0%;
+		background-position: 0% 0%;
 	}
 	100% {
-		background-position: 200%
-			0%;
+		background-position: 200% 0%;
 	}
 }
 

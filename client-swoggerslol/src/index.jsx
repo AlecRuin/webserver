@@ -12,23 +12,14 @@ import { Banner, Navigation } from "./features/index";
 const ScrollToTop = () => {
 	const { pathname } = useLocation();
 	useEffect(() => {
-		window.scrollTo(
-			0,
-			0,
-		);
+		window.scrollTo(0, 0);
 	}, [pathname]);
 	return null;
 };
 
 export default function Index() {
 	try {
-		const [
-			nav_data,
-			set_nav_data,
-		] =
-			useState(
-				[],
-			);
+		const [nav_data, set_nav_data] = useState([]);
 		return (
 			<>
 				<Navigation
@@ -42,8 +33,7 @@ export default function Index() {
 						to={
 							"/"
 						}
-						className="no-decor hero-title"
-					>
+						className="no-decor hero-title">
 						<h1 className="m-a text-center basic-text-style fs-larger">
 							Katlec
 							Valentine's
@@ -54,8 +44,7 @@ export default function Index() {
 							style={{
 								marginBottom: "1vh",
 							}}
-							className="m-a text-center basic-text-style fs-large"
-						>
+							className="m-a text-center basic-text-style fs-large">
 							aka
 							Swoggers
 						</h4>
@@ -92,9 +81,7 @@ export default function Index() {
 			</>
 		);
 	} catch (error) {
-		console.log(
-			error,
-		);
+		console.log(error);
 		return (
 			<p>
 				Error:

@@ -6,17 +6,10 @@ import Posts from "../server/seeds/Posts.json" with { type: "json" };
 export default defineConfig({
 	plugins: [
 		react(),
-		sitemap(
-			{
-				hostname: "http://swoggerslol.com",
-				dynamicRoutes: Posts.map(
-					(
-						p,
-					) =>
-						`/posts/${p.post_title.replace(/ /g, "-")}`,
-				),
-			},
-		),
+		sitemap({
+			hostname: "http://swoggerslol.com",
+			dynamicRoutes: Posts.map((p) => `/posts/${p.post_title.replace(/ /g, "-")}`),
+		}),
 	],
 	server: {
 		proxy: {

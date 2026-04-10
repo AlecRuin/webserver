@@ -7,55 +7,22 @@ import "./Post.css";
 const ModSection = (props) => {
 	const sectionRef = useRef(null);
 	useEffect(() => {
-		if (
-			!sectionRef
-		)
-			return;
-		sectionRef.current.innerHTML =
-			props.data.entry_body;
+		if (!sectionRef) return;
+		sectionRef.current.innerHTML = props.data.entry_body;
 	}, []);
-	return (
-		<section
-			className="w-100 flex flex-column"
-			ref={
-				sectionRef
-			}
-			id={props.data.entry_title.replace(
-				/\s+/g,
-				"-",
-			)}
-		></section>
-	);
+	return <section className="w-100 flex flex-column" ref={sectionRef} id={props.data.entry_title.replace(/\s+/g, "-")}></section>;
 };
 
 export default function Post({ set_nav_data }) {
 	const { post_name } = useParams();
 	const { loading, ERROR_, data } = useQuery(GetPostByPostName, {
 		variables: {
-			PostName: post_name.replace(
-				/-/g,
-				" ",
-			),
+			PostName: post_name.replace(/-/g, " "),
 		},
 	});
 	useEffect(() => {
-		if (
-			!data ||
-			!data.GetPostByPostName
-		)
-			return;
-		set_nav_data(
-			[
-				...data.GetPostByPostName.entry.map(
-					(
-						ele,
-					) =>
-						ele.entry_title,
-				),
-				"Version",
-				"Download",
-			],
-		);
+		if (!data || !data.GetPostByPostName) return;
+		set_nav_data([...data.GetPostByPostName.entry.map((ele) => ele.entry_title), "Version", "Download"]);
 	}, [data]);
 	if (loading) return <div>loading...</div>;
 	if (!data || !data.GetPostByPostName) return <div>Loading</div>;
@@ -66,8 +33,7 @@ export default function Post({ set_nav_data }) {
 				className="highlight-text-style text-center fs-largest txt-grad-secondary shimmer"
 				style={{
 					marginBottom: "0px",
-				}}
-			>
+				}}>
 				{
 					data
 						.GetPostByPostName
@@ -75,38 +41,29 @@ export default function Post({ set_nav_data }) {
 				}
 			</h2>
 			<div className="underline"></div>
-			{data.GetPostByPostName.entry.map(
-				(
-					ele,
-					index,
-				) => (
-					<>
-						<ModSection
-							data={
-								ele
-							}
-							key={
-								index
-							}
-						/>
-						{ele.is_underlined ? (
-							<div
-								style={{
-									boxShadow: "0px 0px 12px 2px rgba(108,250,208, 0.74)",
-								}}
-								className="m-y-1 m-x-a quaternary-underline quaternary-glowbox"
-							></div>
-						) : (
-							""
-						)}
-					</>
-				),
-			)}
+			{data.GetPostByPostName.entry.map((ele, index) => (
+				<>
+					<ModSection
+						data={
+							ele
+						}
+						key={
+							index
+						}
+					/>
+					{ele.is_underlined ? (
+						<div
+							style={{
+								boxShadow: "0px 0px 12px 2px rgba(108,250,208, 0.74)",
+							}}
+							className="m-y-1 m-x-a quaternary-underline quaternary-glowbox"></div>
+					) : (
+						""
+					)}
+				</>
+			))}
 			{/* Versioning */}
-			<section
-				className="w-100 flex flex-column m-y-3"
-				id="Version"
-			>
+			<section className="w-100 flex flex-column m-y-3" id="Version">
 				<h3 className="fs-large text-center highlight-text-style m-y-0">
 					Version
 				</h3>
@@ -133,8 +90,7 @@ export default function Post({ set_nav_data }) {
 								<tr
 									key={
 										index
-									}
-								>
+									}>
 									<td>
 										{
 											element.version_number
@@ -151,42 +107,30 @@ export default function Post({ set_nav_data }) {
 					</tbody>
 				</table>
 				<p className="text-center">
-					{"My version standard is as follows:"}
+					{
+						"My version standard is as follows:"
+					}
 					<br />
-					{"<MAJOR>.<MINOR>.<LEAGUE VERSION>.<LEAGUE VERSION>"}
+					{
+						"<MAJOR>.<MINOR>.<LEAGUE VERSION>.<LEAGUE VERSION>"
+					}
 					<br />
-					{"IE,
-					version
-					1.8.13.14
-					=
-					1
-					major
-					update,
-					8
-					minor
-					updates,
-					last
-					tested
-					on
-					13.14."}
+					{
+						"IE,version 1.8.13.14 = 1 major update, 8 minor updates, last tested on 13.14."
+					}
 				</p>
 			</section>
 			<div
 				style={{
 					boxShadow: "0px 0px 12px 2px rgba(108,250,208, 0.74)",
 				}}
-				className="quaternary-underline quaternary-glowbox"
-			></div>
+				className="quaternary-underline quaternary-glowbox"></div>
 			{/* Downloads */}
-			<section
-				id="Download"
-				className="flex jc-sb w-90 m-y-5"
-			>
+			<section id="Download" className="flex jc-sb w-90 m-y-5">
 				<a
 					className="basic-button m-a no-decor"
 					target="_blank"
-					href="https://discordapp.com/users/357527176020754432"
-				>
+					href="https://discordapp.com/users/357527176020754432">
 					<div className="txt-grad-tertiary shimmer fs-large">
 						Message
 						me
@@ -205,8 +149,7 @@ export default function Post({ set_nav_data }) {
 									.GetPostByPostName
 									.download_url_override
 							: `https://github.com/AlecRuin/${data.GetPostByPostName.post_title.replace(/\s+/g, "-")}/releases/latest`
-					}
-				>
+					}>
 					<div className="txt-grad-secondary shimmer fs-larger">
 						Download
 					</div>
@@ -214,8 +157,7 @@ export default function Post({ set_nav_data }) {
 				<a
 					className="basic-button m-a no-decor"
 					target="_blank"
-					href="https://discord.gg/p9bR7hc57r"
-				>
+					href="https://discord.gg/p9bR7hc57r">
 					<div className="txt-grad-tertiary shimmer fs-large text-center m-auto">
 						Join
 						my

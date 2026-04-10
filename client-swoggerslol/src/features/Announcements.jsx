@@ -16,8 +16,7 @@ export default function Announcements({ data }) {
 								key={
 									element._id
 								}
-								className="w-30 h-a"
-							>
+								className="w-30 h-a">
 								<h2 className="highlight-text-style no-wrap text-center wrap-when-small">
 									{
 										element.post_title
