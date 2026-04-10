@@ -44,7 +44,9 @@ export default function Home({ set_nav_data }) {
 			<Announcements data={posts.filter((ele) => ele.is_active_project)} />
 			<div>
 				<h3 className="highlight-text-style text-center fs-larger m-my">
-					PROJECTS
+					{
+						"PROJECTS"
+					}
 					<div className="underline"></div>
 				</h3>
 			</div>

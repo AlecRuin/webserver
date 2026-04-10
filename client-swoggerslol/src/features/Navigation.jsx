@@ -23,9 +23,9 @@ export default function Navigation({ data }) {
 							marginRight: "10px",
 						}}
 						className="fs-large navigation-title">
-						Table
-						of
-						contents
+						{
+							"Table of contents"
+						}
 					</h3>
 					<div className="simple-underline"></div>
 					{data &&

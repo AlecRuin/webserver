@@ -65,19 +65,23 @@ export default function Post({ set_nav_data }) {
 			{/* Versioning */}
 			<section className="w-100 flex flex-column m-y-3" id="Version">
 				<h3 className="fs-large text-center highlight-text-style m-y-0">
-					Version
+					{
+						"Version"
+					}
 				</h3>
 				<div className="simple-underline"></div>
 				<table className="w-50 m-x-a m-y-1">
 					<thead>
 						<tr>
 							<th>
-								Version
-								number
+								{
+									"Version number"
+								}
 							</th>
 							<th>
-								Patch
-								notes
+								{
+									"Patch notes"
+								}
 							</th>
 						</tr>
 					</thead>
@@ -132,10 +136,9 @@ export default function Post({ set_nav_data }) {
 					target="_blank"
 					href="https://discordapp.com/users/357527176020754432">
 					<div className="txt-grad-tertiary shimmer fs-large">
-						Message
-						me
-						on
-						Discord
+						{
+							"Message me on Discord"
+						}
 					</div>
 				</a>
 				<a
@@ -151,7 +154,9 @@ export default function Post({ set_nav_data }) {
 							: `https://github.com/AlecRuin/${data.GetPostByPostName.post_title.replace(/\s+/g, "-")}/releases/latest`
 					}>
 					<div className="txt-grad-secondary shimmer fs-larger">
-						Download
+						{
+							"Download"
+						}
 					</div>
 				</a>
 				<a
@@ -159,10 +164,9 @@ export default function Post({ set_nav_data }) {
 					target="_blank"
 					href="https://discord.gg/p9bR7hc57r">
 					<div className="txt-grad-tertiary shimmer fs-large text-center m-auto">
-						Join
-						my
-						Discord
-						server
+						{
+							"Join my Discord server"
+						}
 					</div>
 				</a>
 			</section>

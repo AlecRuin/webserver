@@ -3,8 +3,9 @@ export default function Announcements({ data }) {
 		<div className="m-mx-my h-a jc-center flex">
 			<div className="w-100 bg-primary black-border h-a announcement-nugget overflow-hidden">
 				<h3 className="basic-text-style text-center fs-large m-y-1">
-					ACTIVE
-					PROJECT
+					{
+						"ACTIVE PROJECTS"
+					}
 				</h3>
 				<div className="underline m-y-1"></div>
 				<div className="flex jc-se">
@@ -24,7 +25,9 @@ export default function Announcements({ data }) {
 								</h2>
 								<div className="underline"></div>
 								<h3 className="txt-grad-r-rgb1-rgb2-rgb1 m-y-5 shimmer text-center">
-									STATUS
+									{
+										"STATUS"
+									}
 								</h3>
 								<p className="text-center">
 									{

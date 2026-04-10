@@ -18,7 +18,9 @@ const CarouselLoadItem = forwardRef((props, ref) => {
 				</video>
 			</div>
 			<p className="afs-smallest z-1 basic-text-style video-caption text-center m-a">
-				Loading...
+				{
+					"Loading..."
+				}
 			</p>
 		</a>
 	);

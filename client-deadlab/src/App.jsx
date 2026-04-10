@@ -11,7 +11,15 @@ function App() {
 		<>
 			<section id="center">
 				<div className="hero">
-					<img src={heroImg} className="base" width="170" height="179" alt=""/>
+					<img
+						src={
+							heroImg
+						}
+						className="base"
+						width="170"
+						height="179"
+						alt=""
+					/>
 					<img
 						src={
 							reactLogo
@@ -29,8 +37,9 @@ function App() {
 				</div>
 				<div>
 					<h1>
-						Get
-						started
+						{
+							"Get started"
+						}
 					</h1>
 					<p>
 						Edit{" "}

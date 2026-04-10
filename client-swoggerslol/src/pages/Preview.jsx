@@ -74,8 +74,9 @@ export default function Preview({ data, index }) {
 									}
 									className="no-decor button">
 									<div className="shimmer txt-grad-quaternary">
-										Learn
-										more
+										{
+											"Learn more"
+										}
 									</div>
 								</Link>
 								<a
@@ -83,7 +84,9 @@ export default function Preview({ data, index }) {
 									className="no-decor button"
 									href={`https://www.github.com/AlecRuin/${post_title_hyphen}/releases/latest`}>
 									<div className="shimmer txt-grad-tertiary">
-										Download
+										{
+											"Download"
+										}
 									</div>
 								</a>
 							</div>

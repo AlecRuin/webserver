@@ -35,9 +35,9 @@ export default function Index() {
 						}
 						className="no-decor hero-title">
 						<h1 className="m-a text-center basic-text-style fs-larger">
-							Katlec
-							Valentine's
-							Mods
+							{
+								"Katlec Valentine's Mods"
+							}
 						</h1>
 						<div className="underline"></div>
 						<h4
@@ -45,8 +45,9 @@ export default function Index() {
 								marginBottom: "1vh",
 							}}
 							className="m-a text-center basic-text-style fs-large">
-							aka
-							Swoggers
+							{
+								"aka Swoggers"
+							}
 						</h4>
 					</Link>
 					<div className="flex h-a jc-space-between">
