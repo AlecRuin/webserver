@@ -21,7 +21,7 @@
   "homepage": "https://github.com/AlecRuin/swoggerslol#readme",
   "description": "",
   "dependencies": {
-    "concurrently": "^9.1.2"
+    "concurrently": "^9.2.1"
   }
 }
  
