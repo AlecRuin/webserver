@@ -1,10 +1,4 @@
-.angular/
-dist/
-
 node_modules
-old/
-media/videos/HD Sai as Hwei showcase.mp4
-media/videos/HD DB Goku as Sett showcase.mp4
-media/videos/HD DMC5 Nobody as Skarner showcase.mp4
-media/videos/DMC5 Vergil as Yasuo demo.mp4
-large videos
+build
+logs/
+.env

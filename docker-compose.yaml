@@ -1,0 +1,33 @@
+services:
+  website1:
+    build: .
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "4001:3000"
+    volumes:
+      - "/home/linuxserver/swoggerslol/client-swoggerslol/public:/app/client-swoggerslol/public"
+      - "/home/linuxserver/swoggerslol/client-deadlab/public:/app/client-deadlab/public"
+    env_file: .env
+
+  website2:
+    build: .
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "4002:3000"
+    volumes:
+      - "/home/linuxserver/swoggerslol/client-swoggerslol/public:/app/client-swoggerslol/public"
+      - "/home/linuxserver/swoggerslol/client-deadlab/public:/app/client-deadlab/public"
+    env_file: .env
+
+  website3:
+    build: .
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "4003:3000"
+    volumes:
+      - "/home/linuxserver/swoggerslol/client-swoggerslol/public:/app/client-swoggerslol/public"
+      - "/home/linuxserver/swoggerslol/client-deadlab/public:/app/client-deadlab/public"
+    env_file: .env
